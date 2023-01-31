@@ -3,7 +3,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 export default function MyNav({title, first, second}) {
     return (
       <Navbar bg="dark" variant="dark" expand="md">
-        <Container>
+        <Container fluid>
           <Navbar.Brand href="#">{title}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

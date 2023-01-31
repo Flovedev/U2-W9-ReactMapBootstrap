@@ -17,7 +17,9 @@ function App() {
       title ="EpiBOOKS"
       />
 
-      <AllTheBooks />
+      <AllTheBooks 
+      books = "fantasy"
+      />
 
       <MyFooter 
       name = "Flo was here"
