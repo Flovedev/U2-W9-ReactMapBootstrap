@@ -2,7 +2,7 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import books from '../Data/fantasy.json'
 
 export default function AllTheBooks() {
-    console.log(books)
+    // console.log(books)
     return (
         <Container fluid className="bg-secondary py-4 pl-5">
             <Row xs={1} md={2} lg={3} xl={4} >
