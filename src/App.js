@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import AllTheBooks from './components/AllTheBooks';
 import MyFooter from './components/MyFooter';
 import MyNav from './components/MyNav';
+import Welcome from './components/Welcome';
 
 function App() {
   return (
@@ -10,6 +12,12 @@ function App() {
       first = "Home"
       second = "Browse"
       />
+
+      <Welcome 
+      title ="EpiBOOKS"
+      />
+
+      <AllTheBooks />
 
       <MyFooter 
       name = "Flo was here"
