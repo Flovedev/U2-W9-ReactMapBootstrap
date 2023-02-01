@@ -57,7 +57,7 @@ state = {
             {this.state.bar.search.length >= 3 && (
             <Row xs={1} md={2} lg={3} xl={4}>
             
-            {books.filter(book => book.title.toLowerCase().includes(this.state.bar.search.toLocaleLowerCase())).map(filteredBook => {
+            {books.filter(book => book.title.toLowerCase().includes(this.state.bar.search.toLowerCase())).map(filteredBook => {
                 return (
                     <SingleBook 
                          title = {filteredBook.title}
