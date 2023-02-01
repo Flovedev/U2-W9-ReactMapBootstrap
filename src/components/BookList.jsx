@@ -22,7 +22,7 @@ state = {
             <Row>
             <Form className="d-flex pb-4">
                 <Form.Control
-                  type="search"
+                  type="text"
                   placeholder="Book search..."
                   className="me-2"
                   aria-label="Search"
@@ -53,10 +53,11 @@ state = {
                 }
             </Row>
             )}
+
             {this.state.bar.search.length >= 3 && (
             <Row xs={1} md={2} lg={3} xl={4}>
             
-            {books.filter(book => book.includes(`${this.state.bar.search}`)).map(filteredBook => {
+            {books.filter(book => book.title.includes(this.state.bar.search)).map(filteredBook => {
                 return (
                     <SingleBook 
                          title = {filteredBook.title}

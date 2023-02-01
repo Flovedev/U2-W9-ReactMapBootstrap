@@ -7,7 +7,7 @@ state = {selected: false}
 
     render() {
     return (
-        <Col className="mb-2" key={this.props.key}
+        <Col className="mb-2"
         onClick={() =>
             this.setState(prevState => ({
                 selected: !prevState.selected
