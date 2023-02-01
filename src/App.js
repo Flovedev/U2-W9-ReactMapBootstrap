@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import AllTheBooks from './components/AllTheBooks';
+import BookList from './components/BookList';
 import MyFooter from './components/MyFooter';
 import MyNav from './components/MyNav';
 import Welcome from './components/Welcome';
@@ -17,9 +17,7 @@ function App() {
       title ="EpiBOOKS"
       />
 
-      <AllTheBooks 
-      books = "fantasy"
-      />
+      <BookList />
 
       <MyFooter 
       name = "Flo was here"

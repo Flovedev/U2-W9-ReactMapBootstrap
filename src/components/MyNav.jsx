@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 
 export default function MyNav({title, first, second}) {
     return (
@@ -6,11 +6,11 @@ export default function MyNav({title, first, second}) {
         <Container fluid>
           <Navbar.Brand href="#">{title}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#">{first}</Nav.Link>
-              <Nav.Link href="#">{second}</Nav.Link>
-            </Nav>
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto flex-grow-1">
+               <Nav.Link href="#">{first}</Nav.Link>
+               <Nav.Link href="#">{second}</Nav.Link>
+              </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
