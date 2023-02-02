@@ -1,8 +1,7 @@
 import { Component } from "react";
 import AddComment from "./AddComment";
 import CommentedList from "./CommentedList";
-import SingleComment from "./SingleComment";
-import { ListGroup } from "react-bootstrap";
+// import SingleComment from "./SingleComment";
 
 let url = "https://striveschool-api.herokuapp.com/api/comments/";
 let options = {
@@ -39,28 +38,12 @@ class CommentedArea extends Component {
   }
 
   render() {
-    return this.state.bookData.map((res) => {
-      // console.log(this.state.bookData);
-      return (
-        // <CommentedList
-        //   bookList={
-        //     <SingleComment
-        //       comment={res.comment}
-        //       rate={res.rate}
-        //       elementId={res._id}
-        //       key={res._id}
-        //     />
-        //   }
-        // />
-
-        <SingleComment
-          comment={res.comment}
-          rate={res.rate}
-          elementId={res._id}
-          key={res._id}
-        />
-      );
-    });
+    return (
+      <>
+        <AddComment />
+        <CommentedList data={this.state.bookData} />
+      </>
+    );
   }
 }
 

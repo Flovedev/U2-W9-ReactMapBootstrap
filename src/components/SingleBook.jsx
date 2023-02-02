@@ -27,11 +27,7 @@ class SingleBook extends Component {
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
 
-            {this.state.selected && (
-              <Card.Text>
-                <CommentedArea elementId={this.props.id} />
-              </Card.Text>
-            )}
+            {this.state.selected && <CommentedArea elementId={this.props.id} />}
           </Card.Body>
         </Card>
       </Col>

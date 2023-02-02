@@ -1,9 +1,20 @@
 import { ListGroup } from "react-bootstrap";
+import SingleComment from "./SingleComment";
 
-export default function CommentedList({ booksList }) {
+export default function CommentedList({ data }) {
   return (
-    <ListGroup as="ol" numbered>
-      {booksList}
+    <ListGroup>
+      {data.map((res) => {
+        console.log(res);
+        return (
+          <SingleComment
+            comment={res.comment}
+            rate={res.rate}
+            elementId={res._id}
+            key={res._id}
+          />
+        );
+      })}
     </ListGroup>
   );
 }
