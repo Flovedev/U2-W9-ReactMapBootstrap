@@ -1,11 +1,11 @@
 import { Component } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 class AddComment extends Component {
   render() {
     return (
       <>
-        <h3>Post comment:</h3>
+        <h3 className="text-white">Post comment:</h3>
         <Form.Group controlId="add-comments">
           <Form.Control type="text" placeholder="Enter comment" />
           <Form.Control as="select">
@@ -15,7 +15,11 @@ class AddComment extends Component {
             <option>4</option>
             <option>5</option>
           </Form.Control>
-          <Form.Control type="text" placeholder="Enter comment" />
+          <div className="text-center m-2">
+            <Button variant="success" type="submit">
+              Post
+            </Button>
+          </div>
         </Form.Group>
       </>
     );

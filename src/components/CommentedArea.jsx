@@ -39,10 +39,10 @@ class CommentedArea extends Component {
 
   render() {
     return (
-      <>
+      <div className="bg-dark border border-color-white p-3">
         <AddComment />
         <CommentedList data={this.state.bookData} />
-      </>
+      </div>
     );
   }
 }
