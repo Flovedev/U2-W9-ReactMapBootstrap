@@ -1,8 +1,9 @@
-import { Col, Card } from "react-bootstrap";
+import { Col, Card, Badge } from "react-bootstrap";
 import { Component } from "react";
+import CommentedArea from "./CommentedArea";
 
 class SingleBook extends Component {
-  state = { selected: false };
+  state = { selected: false, selectedId: "" };
 
   render() {
     return (
@@ -21,9 +22,16 @@ class SingleBook extends Component {
           }}
           className="bg-dark text-white"
         >
+          <Badge bg="secondary">{this.props.id}</Badge>{" "}
           <Card.Img variant="top" src={this.props.img} />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
+
+            {this.state.selected && (
+              <Card.Text>
+                <CommentedArea elementId={this.props.id} />
+              </Card.Text>
+            )}
           </Card.Body>
         </Card>
       </Col>

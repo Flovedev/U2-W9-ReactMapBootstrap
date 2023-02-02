@@ -43,6 +43,7 @@ class BookList extends Component {
                 <SingleBook
                   title={book.title}
                   img={book.img}
+                  id={book.asin}
                   key={book.asin}
                   disable
                 />
@@ -64,6 +65,7 @@ class BookList extends Component {
                   <SingleBook
                     title={filteredBook.title}
                     img={filteredBook.img}
+                    id={filteredBook.asin}
                     key={filteredBook.asin}
                     disable
                   />
