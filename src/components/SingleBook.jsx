@@ -20,7 +20,6 @@ class SingleBook extends Component {
             }))
           }
         >
-          <Badge bg="secondary">{this.props.id}</Badge>{" "}
           <Card.Img variant="top" src={this.props.img} />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>

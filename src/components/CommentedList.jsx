@@ -5,13 +5,13 @@ export default function CommentedList({ data }) {
   return (
     <ListGroup>
       {data.map((res) => {
-        console.log(res);
+        // console.log(res);
         return (
           <SingleComment
             comment={res.comment}
             rate={res.rate}
-            elementId={res._id}
             key={res._id}
+            commentId={res._id}
           />
         );
       })}

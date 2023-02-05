@@ -1,7 +1,7 @@
 import { Component } from "react";
 import AddComment from "./AddComment";
 import CommentedList from "./CommentedList";
-// import SingleComment from "./SingleComment";
+import { Spinner, Alert } from "react-bootstrap";
 
 let url = "https://striveschool-api.herokuapp.com/api/comments/";
 let options = {
@@ -14,6 +14,8 @@ let options = {
 class CommentedArea extends Component {
   state = {
     bookData: [],
+    isLoading: true,
+    isError: false,
   };
 
   fetchComments = async () => {
@@ -24,12 +26,15 @@ class CommentedArea extends Component {
         // console.log(data);
         this.setState({
           bookData: data,
+          isLoading: false,
         });
       } else {
-        console.log("not ok");
+        this.setState({ isLoading: false, isError: true });
       }
     } catch (error) {
       console.log(error);
+
+      this.setState({ isLoading: false, isError: true });
     }
   };
 
@@ -40,7 +45,14 @@ class CommentedArea extends Component {
   render() {
     return (
       <div className="bg-dark border border-color-white p-3">
-        <AddComment />
+        <AddComment data={this.props.elementId} />
+
+        {this.state.isLoading && (
+          <Spinner animation="border" variant="success" />
+        )}
+
+        {this.state.isError && <Alert variant="danger">We got an error!</Alert>}
+
         <CommentedList data={this.state.bookData} />
       </div>
     );
