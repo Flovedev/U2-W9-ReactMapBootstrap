@@ -14,6 +14,7 @@ let options = {
 class CommentedArea extends Component {
   state = {
     bookData: [],
+    elementId: "",
     isLoading: true,
     isError: false,
   };

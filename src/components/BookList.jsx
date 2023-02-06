@@ -50,7 +50,7 @@ class BookList extends Component {
 
         {this.state.bar.search.length < 3 && (
           <Row>
-            <Col>
+            <Col sm={7} className="d-flex flex-wrap">
               {books.map((book) => {
                 return (
                   <SingleBook

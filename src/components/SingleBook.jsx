@@ -7,9 +7,10 @@ class SingleBook extends Component {
 
   render() {
     return (
-      <Col sm={4} className="mb-2">
+      <Col className="mb-2">
         <Card
           style={{
+            width: `10rem`,
             border: `${this.state.selected ? "solid" : ""}`,
           }}
           className="bg-dark text-white"
@@ -21,7 +22,7 @@ class SingleBook extends Component {
           onClick={() => this.props.changeComment(this.props.elementId)}
         >
           <Card.Img variant="top" src={this.props.img} />
-          <Card.Body>
+          <Card.Body className="card-bodies">
             <Card.Title>{this.props.title}</Card.Title>
           </Card.Body>
         </Card>
