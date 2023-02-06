@@ -8,7 +8,7 @@ class AddComment extends Component {
     newComment: {
       comment: "",
       rate: 1,
-      elementId: this.props.data,
+      elementId: "",
     },
   };
 
@@ -72,7 +72,18 @@ class AddComment extends Component {
               <option>5</option>
             </Form.Control>
             <div className="text-center m-2">
-              <Button variant="success" type="submit">
+              <Button
+                variant="success"
+                type="submit"
+                onClick={() => {
+                  this.setState({
+                    newComment: {
+                      ...this.state.newComment,
+                      elementId: this.props.data,
+                    },
+                  });
+                }}
+              >
                 Post Comment
               </Button>
             </div>

@@ -49,3 +49,7 @@
 .card-bodies div {
   font-size: 15px;
 }
+
+.card-main:hover {
+  cursor: pointer;
+}

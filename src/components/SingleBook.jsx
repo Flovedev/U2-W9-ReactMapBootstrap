@@ -13,13 +13,21 @@ class SingleBook extends Component {
             width: `10rem`,
             border: `${this.state.selected ? "solid" : ""}`,
           }}
-          className="bg-dark text-white"
+          className="bg-dark text-white card-main"
           // onClick={() =>
           //   this.setState((e) => ({
           //     selected: !e.selected,
           //   }))
           // }
-          onClick={() => this.props.changeComment(this.props.elementId)}
+          onClick={() => {
+            console.log(this.props.selected, this.props.elementId);
+            this.props.selected === this.props.elementId &&
+              this.setState((e) => ({
+                selected: !e.true,
+              }));
+
+            this.props.changeComment(this.props.elementId);
+          }}
         >
           <Card.Img variant="top" src={this.props.img} />
           <Card.Body className="card-bodies">

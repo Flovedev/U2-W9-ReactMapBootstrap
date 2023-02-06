@@ -9,20 +9,13 @@ class BookList extends Component {
     bar: {
       search: "",
     },
-    elementId: "0316438960",
+    elementId: "",
     data: "",
-    selected: false,
   };
 
   changeComment = (newSelected) => {
     this.setState({
       elementId: newSelected,
-    });
-  };
-
-  changeData = (newData) => {
-    this.setState({
-      data: newData,
     });
   };
 
@@ -48,36 +41,8 @@ class BookList extends Component {
           </Form>
         </Row>
 
-        {this.state.bar.search.length < 3 && (
-          <Row>
-            <Col sm={7} className="d-flex flex-wrap">
-              {books.map((book) => {
-                return (
-                  <SingleBook
-                    title={book.title}
-                    img={book.img}
-                    id={book.asin}
-                    key={book.asin}
-                    elementId={book.asin}
-                    changeComment={this.changeComment}
-                    selected={this.state.selected}
-                    disable
-                  />
-                );
-              })}
-            </Col>
-            <Col sm={5} className="align-content-start">
-              <CommentedArea
-                data={this.state.data}
-                elementId={this.state.elementId}
-                changeData={this.changeData}
-              />
-            </Col>
-          </Row>
-        )}
-
-        {this.state.bar.search.length >= 3 && (
-          <Row xs={1} md={2} lg={3} xl={4}>
+        <Row>
+          <Col sm={7} className="d-flex flex-wrap">
             {books
               .filter((book) =>
                 book.title
@@ -91,12 +56,27 @@ class BookList extends Component {
                     img={filteredBook.img}
                     id={filteredBook.asin}
                     key={filteredBook.asin}
-                    disable
+                    elementId={filteredBook.asin}
+                    changeComment={this.changeComment}
+                    selected={this.state.elementId}
                   />
                 );
               })}
-          </Row>
-        )}
+          </Col>
+
+          <Col sm={5} className="align-content-start">
+            {this.state.elementId !== "" && (
+              <CommentedArea
+                data={this.state.data}
+                elementId={this.state.elementId}
+              />
+            )}
+
+            {this.state.elementId === "" && (
+              <h2 className="text-white">Please select one book</h2>
+            )}
+          </Col>
+        </Row>
       </Container>
     );
   }
