@@ -42,6 +42,10 @@ class CommentedArea extends Component {
     this.fetchComments();
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.elementId !== this.props.elementId) this.fetchComments();
+  };
+
   render() {
     return (
       <div className="bg-dark border border-color-white p-3">

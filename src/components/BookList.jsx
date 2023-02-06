@@ -1,6 +1,7 @@
 import { Component } from "react";
-import { Container, Row, Form } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import books from "../Data/fantasy.json";
+import CommentedArea from "./CommentedArea";
 import SingleBook from "./SingleBook";
 
 class BookList extends Component {
@@ -8,10 +9,21 @@ class BookList extends Component {
     bar: {
       search: "",
     },
+    elementId: "0316438960",
+    data: "",
+    selected: false,
   };
 
-  filterBooklist = () => {
-    return this.state.bar.search.includes(books.name);
+  changeComment = (newSelected) => {
+    this.setState({
+      elementId: newSelected,
+    });
+  };
+
+  changeData = (newData) => {
+    this.setState({
+      data: newData,
+    });
   };
 
   render() {
@@ -37,18 +49,30 @@ class BookList extends Component {
         </Row>
 
         {this.state.bar.search.length < 3 && (
-          <Row xs={1} md={2} lg={3} xl={4}>
-            {books.map((book) => {
-              return (
-                <SingleBook
-                  title={book.title}
-                  img={book.img}
-                  id={book.asin}
-                  key={book.asin}
-                  disable
-                />
-              );
-            })}
+          <Row>
+            <Col>
+              {books.map((book) => {
+                return (
+                  <SingleBook
+                    title={book.title}
+                    img={book.img}
+                    id={book.asin}
+                    key={book.asin}
+                    elementId={book.asin}
+                    changeComment={this.changeComment}
+                    selected={this.state.selected}
+                    disable
+                  />
+                );
+              })}
+            </Col>
+            <Col sm={5} className="align-content-start">
+              <CommentedArea
+                data={this.state.data}
+                elementId={this.state.elementId}
+                changeData={this.changeData}
+              />
+            </Col>
           </Row>
         )}
 

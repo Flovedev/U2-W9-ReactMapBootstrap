@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 export default function MyNav({ title, first, second }) {
   return (
