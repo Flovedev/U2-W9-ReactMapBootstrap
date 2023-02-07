@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
 import AddComment from "./AddComment";
 import CommentedList from "./CommentedList";
 import { Spinner, Alert } from "react-bootstrap";
@@ -11,57 +11,53 @@ let options = {
   },
 };
 
-class CommentedArea extends Component {
-  state = {
-    bookData: [],
-    elementId: "",
-    isLoading: true,
-    isError: false,
-  };
+const CommentedArea = ({ elementId }) => {
+  const [commentArea, setCommentArea] = useState({ bookData: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
-  fetchComments = async () => {
+  const fetchComments = async () => {
     try {
-      let res = await fetch(url + `${this.props.elementId}`, options);
+      let res = await fetch(url + `${elementId}`, options);
       let data = await res.json();
       if (res.ok) {
         // console.log(data);
-        this.setState({
+        setCommentArea({
           bookData: data,
-          isLoading: false,
         });
+        setIsLoading(false);
       } else {
-        this.setState({ isLoading: false, isError: true });
+        setIsLoading(false);
+        setIsError(true);
       }
     } catch (error) {
       console.log(error);
-
-      this.setState({ isLoading: false, isError: true });
+      setIsLoading(false);
+      setIsError(true);
     }
   };
 
-  componentDidMount() {
-    this.fetchComments();
-  }
+  useEffect(() => {
+    fetchComments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevProps.elementId !== this.props.elementId) this.fetchComments();
-  };
+  useEffect(() => {
+    fetchComments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [elementId]);
 
-  render() {
-    return (
-      <div className="bg-dark border border-color-white p-3">
-        <AddComment data={this.props.elementId} />
+  return (
+    <div className="bg-dark border border-color-white p-3">
+      <AddComment data={elementId} />
 
-        {this.state.isLoading && (
-          <Spinner animation="border" variant="success" />
-        )}
+      {isLoading && <Spinner animation="border" variant="success" />}
 
-        {this.state.isError && <Alert variant="danger">We got an error!</Alert>}
+      {isError && <Alert variant="danger">We got an error!</Alert>}
 
-        <CommentedList data={this.state.bookData} />
-      </div>
-    );
-  }
-}
+      <CommentedList data={commentArea.bookData} />
+    </div>
+  );
+};
 
 export default CommentedArea;

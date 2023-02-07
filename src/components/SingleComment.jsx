@@ -1,12 +1,12 @@
 import { ListGroup, Button } from "react-bootstrap";
-import { Component } from "react";
+import { setState } from "react";
 
 const url = "https://striveschool-api.herokuapp.com/api/comments/";
 
-class SingleComment extends Component {
-  deleteComment = async () => {
+const SingleComment = ({ commentId, comment, rate }) => {
+  const deleteComment = async () => {
     try {
-      let res = await fetch(url + this.props.commentId, {
+      let res = await fetch(url + commentId, {
         method: "DELETE",
         headers: {
           Authorization:
@@ -19,23 +19,21 @@ class SingleComment extends Component {
     }
   };
 
-  render() {
-    return (
-      <ListGroup.Item className="bg-info text-white mb-2">
-        <p>Comment: {this.props.comment}</p>
-        <p>Rate: {this.props.rate}</p>
-        <Button
-          variant="danger"
-          onClick={(e) => {
-            e.preventDefault();
-            this.deleteComment();
-          }}
-        >
-          Delete Comment
-        </Button>
-      </ListGroup.Item>
-    );
-  }
-}
+  return (
+    <ListGroup.Item className="bg-info text-white mb-2">
+      <p>Comment: {comment}</p>
+      <p>Rate: {rate}</p>
+      <Button
+        variant="danger"
+        onClick={(e) => {
+          e.preventDefault();
+          deleteComment();
+        }}
+      >
+        Delete Comment
+      </Button>
+    </ListGroup.Item>
+  );
+};
 
 export default SingleComment;

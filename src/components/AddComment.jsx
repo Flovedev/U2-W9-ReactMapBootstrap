@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 const url = "https://striveschool-api.herokuapp.com/api/comments/";
@@ -26,11 +26,6 @@ const AddComment = ({ data }) => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    sendComment();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>
