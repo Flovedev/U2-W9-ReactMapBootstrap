@@ -1,5 +1,4 @@
 import { ListGroup, Button } from "react-bootstrap";
-// import { useState } from "react";
 
 const url = "https://striveschool-api.herokuapp.com/api/comments/";
 

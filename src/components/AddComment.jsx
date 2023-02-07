@@ -33,7 +33,7 @@ const AddComment = ({ data, render }) => {
         onSubmit={(e) => {
           e.preventDefault();
           sendComment();
-          render(data);
+          render(commentUse);
         }}
       >
         <Form.Group controlId="add-comments">

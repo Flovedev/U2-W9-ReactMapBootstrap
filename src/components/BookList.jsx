@@ -9,6 +9,9 @@ const BookList = () => {
     search: "",
     elementId: "",
     data: "",
+  });
+
+  const [selecting, setSelecting] = useState({
     selected: "",
   });
 
@@ -20,8 +23,7 @@ const BookList = () => {
   };
 
   const changeSelected = (event) => {
-    setDatas({
-      ...datas,
+    setSelecting({
       selected: event,
     });
   };
@@ -60,7 +62,7 @@ const BookList = () => {
                   key={filteredBook.asin}
                   elementId={filteredBook.asin}
                   changeComment={changeComment}
-                  selectedIds={datas.elementId}
+                  selecting={changeSelected}
                 />
               );
             })}
