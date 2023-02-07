@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 
 const url = "https://striveschool-api.herokuapp.com/api/comments/";
 
-const AddComment = ({ data }) => {
+const AddComment = ({ data, render }) => {
   const [commentUse, setComment] = useState({
     comment: "",
     rate: 1,
@@ -33,6 +33,7 @@ const AddComment = ({ data }) => {
         onSubmit={(e) => {
           e.preventDefault();
           sendComment();
+          render(data);
         }}
       >
         <Form.Group controlId="add-comments">

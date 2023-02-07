@@ -1,9 +1,9 @@
 import { ListGroup, Button } from "react-bootstrap";
-import { setState } from "react";
+// import { useState } from "react";
 
 const url = "https://striveschool-api.herokuapp.com/api/comments/";
 
-const SingleComment = ({ commentId, comment, rate }) => {
+const SingleComment = ({ commentId, comment, rate, renderAgain }) => {
   const deleteComment = async () => {
     try {
       let res = await fetch(url + commentId, {
@@ -28,6 +28,7 @@ const SingleComment = ({ commentId, comment, rate }) => {
         onClick={(e) => {
           e.preventDefault();
           deleteComment();
+          renderAgain(commentId);
         }}
       >
         Delete Comment

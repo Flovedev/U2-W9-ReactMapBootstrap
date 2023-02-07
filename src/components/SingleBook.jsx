@@ -2,7 +2,7 @@ import { Col, Card } from "react-bootstrap";
 import { useState } from "react";
 // import CommentedArea from "./CommentedArea";
 
-const SingleBook = ({ changeComment, elementId, img, title }) => {
+const SingleBook = ({ changeComment, elementId, img, title, selectedIds }) => {
   // state = { selected: false, selectedId: "" };
 
   const [selected, setSelected] = useState(false);

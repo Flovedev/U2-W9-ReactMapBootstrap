@@ -15,6 +15,15 @@ const CommentedArea = ({ elementId }) => {
   const [commentArea, setCommentArea] = useState({ bookData: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [renderComments, setRenderComments] = useState({
+    render: [],
+  });
+
+  const renderCommentsFunc = (event) => {
+    setRenderComments({
+      render: event,
+    });
+  };
 
   const fetchComments = async () => {
     try {
@@ -45,17 +54,17 @@ const CommentedArea = ({ elementId }) => {
   useEffect(() => {
     fetchComments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [elementId]);
+  }, [elementId, renderComments]);
 
   return (
     <div className="bg-dark border border-color-white p-3">
-      <AddComment data={elementId} />
+      <AddComment data={elementId} render={renderCommentsFunc} />
 
       {isLoading && <Spinner animation="border" variant="success" />}
 
       {isError && <Alert variant="danger">We got an error!</Alert>}
 
-      <CommentedList data={commentArea.bookData} />
+      <CommentedList data={commentArea.bookData} render={renderCommentsFunc} />
     </div>
   );
 };

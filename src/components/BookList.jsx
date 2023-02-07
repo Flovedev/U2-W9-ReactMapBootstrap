@@ -9,12 +9,20 @@ const BookList = () => {
     search: "",
     elementId: "",
     data: "",
+    selected: "",
   });
 
   const changeComment = (newSelected) => {
     setDatas({
       ...datas,
       elementId: newSelected,
+    });
+  };
+
+  const changeSelected = (event) => {
+    setDatas({
+      ...datas,
+      selected: event,
     });
   };
 
@@ -52,7 +60,7 @@ const BookList = () => {
                   key={filteredBook.asin}
                   elementId={filteredBook.asin}
                   changeComment={changeComment}
-                  selected={datas.elementId}
+                  selectedIds={datas.elementId}
                 />
               );
             })}
